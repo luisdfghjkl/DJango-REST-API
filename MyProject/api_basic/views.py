@@ -16,7 +16,13 @@ from rest_framework import viewsets
 from django.shortcuts import get_object_or_404
 
 # Create your views here.
-class ArticleViewSet(mixins.DestroyModelMixin,mixins.RetrieveModelMixin,mixins.UpdateModelMixin,viewsets.GenericViewSet,mixins.ListModelMixin,mixins.CreateModelMixin):
+class ArticleViewSet(viewsets.ModelViewSet):
+	serializer_class= ArticleSerializer
+	queryset= Article.objects.all()
+	
+
+
+class ArticleViewSet2(mixins.DestroyModelMixin,mixins.RetrieveModelMixin,mixins.UpdateModelMixin,viewsets.GenericViewSet,mixins.ListModelMixin,mixins.CreateModelMixin):
 	serializer_class= ArticleSerializer
 	queryset= Article.objects.all()
 
